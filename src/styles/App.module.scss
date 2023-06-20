@@ -1,0 +1,9 @@
+@import 'mixin';
+
+.app_container {
+  padding: 2vw 7.5vw;
+
+  @include md {
+    padding: 0.5vw 5vw;
+  }
+}

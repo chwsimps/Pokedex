@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { getPokemon } from './app/pokemonSlice';
 import Home from './pages/Home';
 import Details from './pages/Details';
+import styles from '@/styles/App.module.scss';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,13 +20,15 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details" element={<Details />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
-    </Router>
+    <div className={styles.app_container}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

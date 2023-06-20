@@ -1,0 +1,30 @@
+// media aliases and breakpoints
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 1056px;
+$screen-xl: 1280px;
+
+// media devices
+@mixin sm {
+  @media screen and (min-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
