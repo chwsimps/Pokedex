@@ -28,10 +28,10 @@ export const pokemonList$: Observable<Pokemon[]> = resourceList$.pipe(
       ),
     ),
   ),
-  catchError((error) => handleError(error)),
+  catchError((error: Error) => handleError(error)),
 );
 
 // Error handling
-const handleError = (error: any) => {
+const handleError = (error: Error) => {
   return throwError(() => error);
 };

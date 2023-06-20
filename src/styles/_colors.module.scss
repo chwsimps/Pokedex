@@ -42,22 +42,44 @@ $fairy: #d685ad;
 
 // pokemon type colors
 :export {
-  normal_type: darken($normal, 15%);
-  fire_type: darken($fire, 15%);
-  water_type: darken($water, 15%);
-  electric_type: darken($electric, 15%);
-  grass_type: darken($grass, 15%);
-  ice_type: darken($ice, 15%);
-  fighting_type: darken($fighting, 15%);
-  poison_type: darken($poison, 15%);
-  ground_type: darken($ground, 15%);
-  flying_type: darken($flying, 15%);
-  psychic_type: darken($psychic, 15%);
-  bug_type: darken($bug, 15%);
-  rock_type: darken($rock, 15%);
-  ghost_type: darken($ghost, 15%);
-  dragon_type: darken($dragon, 15%);
-  dark_type: darken($dark, 15%);
-  steel_type: darken($steel, 15%);
-  fairy_type: darken($fairy, 15%);
+  normal_dark: darken($normal, 15%);
+  fire_dark: darken($fire, 15%);
+  water_dark: darken($water, 15%);
+  electric_dark: darken($electric, 15%);
+  grass_dark: darken($grass, 15%);
+  ice_dark: darken($ice, 15%);
+  fighting_dark: darken($fighting, 15%);
+  poison_dark: darken($poison, 15%);
+  ground_dark: darken($ground, 15%);
+  flying_dark: darken($flying, 15%);
+  psychic_dark: darken($psychic, 15%);
+  bug_dark: darken($bug, 15%);
+  rock_dark: darken($rock, 15%);
+  ghost_dark: darken($ghost, 15%);
+  dragon_dark: darken($dragon, 15%);
+  dark_dark: darken($dark, 15%);
+  steel_dark: darken($steel, 15%);
+  fairy_dark: darken($fairy, 15%);
+}
+
+// light colors to contrast dark text
+:export {
+  normal_light: lighten($normal, 15%);
+  fire_light: lighten($fire, 15%);
+  water_light: lighten($water, 15%);
+  electric_light: lighten($electric, 15%);
+  grass_light: lighten($grass, 15%);
+  ice_light: lighten($ice, 15%);
+  fighting_light: lighten($fighting, 15%);
+  poison_light: lighten($poison, 15%);
+  ground_light: lighten($ground, 15%);
+  flying_light: lighten($flying, 15%);
+  psychic_light: lighten($psychic, 15%);
+  bug_light: lighten($bug, 15%);
+  rock_light: lighten($rock, 15%);
+  ghost_light: lighten($ghost, 15%);
+  dragon_light: lighten($dragon, 15%);
+  dark_light: lighten($dark, 15%);
+  steel_light: lighten($steel, 15%);
+  fairy_light: lighten($fairy, 15%);
 }

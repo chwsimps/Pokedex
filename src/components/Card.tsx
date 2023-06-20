@@ -7,25 +7,39 @@ interface CardProps {
 }
 
 const Card = ({ pokemon }: CardProps) => {
-  const imgSrc = pokemon.sprites.other?.dream_world.front_default as string;
-  const typeNames = pokemon.types.map((t) => t.type.name);
+  const imgSrc: string = pokemon.sprites.other?.dream_world
+    .front_default as string;
+  const typeNames: string[] = pokemon.types.map((t) => t.type.name);
+  const bgColor: string = typeNames[0];
+
+  const padNumber = (num: number) => `#${num.toString().padStart(4, '0')}`;
 
   return (
     <div
-      style={{ backgroundColor: colors[typeNames[0]] }}
+      style={{ backgroundColor: colors[bgColor] }}
       className={styles.pokemon_card}
     >
+      <p
+        className={styles.pokemon_id}
+        style={{
+          backgroundColor: colors[`${bgColor}_light`],
+        }}
+      >
+        {padNumber(pokemon.id)}
+      </p>
       <div className={styles.pokemon_card_details}>
-        <p className={styles.detail_id}>{pokemon.id}</p>
         <h3>{pokemon.name}</h3>
-        {typeNames.map((type) => (
-          <span
-            className={styles.pokemon_type}
-            style={{ backgroundColor: colors[`${type}_type`] }}
-          >
-            {type}
-          </span>
-        ))}
+        <div className={styles.pokemon_types}>
+          {typeNames.map((type) => (
+            <span
+              key={type}
+              className={styles.pokemon_type}
+              style={{ backgroundColor: colors[`${type}_dark`] }}
+            >
+              {type}
+            </span>
+          ))}
+        </div>
       </div>
       <img
         src={imgSrc}
