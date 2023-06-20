@@ -1997,6 +1997,11 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
+pokenode-ts@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/pokenode-ts/-/pokenode-ts-1.19.1.tgz#1231c4e14bdb62a0c45d40ad6a3cc4d4781705dc"
+  integrity sha512-LqVlVyRIzx7StpLqYfpEG6WyL35YKl7r/ghBBTV3ZSND+aMlq9ajhazsFGutnaSQHyfh6aQhMjNavrCjE8LJog==
+
 postcss@^8.4.23:
   version "8.4.24"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.24.tgz#f714dba9b2284be3cc07dbd2fc57ee4dc972d2df"
