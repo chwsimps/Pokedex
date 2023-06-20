@@ -1,0 +1,63 @@
+// pokemon types
+$normal: #a8a77a;
+$fire: #ee8130;
+$water: #6390f0;
+$electric: #f7d02c;
+$grass: #7ac74c;
+$ice: #96d9d6;
+$fighting: #c22e28;
+$poison: #a33ea1;
+$ground: #e2bf65;
+$flying: #a98ff3;
+$psychic: #f95587;
+$bug: #a6b91a;
+$rock: #b6a136;
+$ghost: #735797;
+$dragon: #6f35fc;
+$dark: #705746;
+$steel: #b7b7ce;
+$fairy: #d685ad;
+
+// background colors
+:export {
+  normal: $normal;
+  fire: $fire;
+  water: $water;
+  electric: $electric;
+  grass: $grass;
+  ice: $ice;
+  fighting: $fighting;
+  poison: $poison;
+  ground: $ground;
+  flying: $flying;
+  psychic: $psychic;
+  bug: $bug;
+  rock: $rock;
+  ghost: $ghost;
+  dragon: $dragon;
+  dark: $dark;
+  steel: $steel;
+  fairy: $fairy;
+}
+
+// pokemon type colors
+:export {
+  normal_type: darken($normal, 15%);
+  fire_type: darken($fire, 15%);
+  water_type: darken($water, 15%);
+  electric_type: darken($electric, 15%);
+  grass_type: darken($grass, 15%);
+  ice_type: darken($ice, 15%);
+  fighting_type: darken($fighting, 15%);
+  poison_type: darken($poison, 15%);
+  ground_type: darken($ground, 15%);
+  flying_type: darken($flying, 15%);
+  psychic_type: darken($psychic, 15%);
+  bug_type: darken($bug, 15%);
+  rock_type: darken($rock, 15%);
+  ghost_type: darken($ghost, 15%);
+  dragon_type: darken($dragon, 15%);
+  dark_type: darken($dark, 15%);
+  steel_type: darken($steel, 15%);
+  fairy_type: darken($fairy, 15%);
+}

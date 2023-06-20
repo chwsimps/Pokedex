@@ -14,10 +14,40 @@
 
   @include md {
     width: 35%;
+    padding: 3vw 3.5vw;
   }
 
   @include lg {
     width: 30%;
+  }
+
+  &_details {
+    .detail_id {
+      color: #2d3436;
+    }
+
+    h3 {
+      color: white;
+      text-transform: capitalize;
+      margin: 10px 0;
+    }
+
+    .pokemon_type {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 5px;
+      box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+        0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+      color: white;
+
+      &:last-child {
+        margin-left: 15px;
+      }
+
+      &:only-child {
+        padding: 25px;
+      }
+    }
   }
 
   &_img {
