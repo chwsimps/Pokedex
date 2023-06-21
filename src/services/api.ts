@@ -9,10 +9,11 @@ import {
 } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
+// Base URLs
 const BASE_URL = 'https://pokeapi.co/api/v2';
 const POKEMON_URL = `${BASE_URL}/pokemon`;
 
-// Observables for an Ajax request
+// Observables related to pokemon api
 const resourceList$: Observable<NamedAPIResource[]> = ajax
   .getJSON<NamedAPIResourceList>(POKEMON_URL)
   .pipe(
@@ -30,6 +31,11 @@ export const pokemonList$: Observable<Pokemon[]> = resourceList$.pipe(
   ),
   catchError((error: Error) => handleError(error)),
 );
+
+export const pokemonByName$ = (name: string): Observable<Pokemon> =>
+  ajax
+    .getJSON<Pokemon>(`${POKEMON_URL}/${name}`)
+    .pipe(catchError((error: Error) => handleError(error)));
 
 // Error handling
 const handleError = (error: Error) => {
