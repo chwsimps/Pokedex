@@ -5,14 +5,14 @@ import styles from '@/styles/App.module.scss';
 
 const Details = () => {
   // Redux hooks
-  const { selectedPokemon: pokemon } = useSelector(
-    (state: RootState) => state.pokemon,
-  );
+  const { selectedPokemon } = useSelector((state: RootState) => state.pokemon);
+
+  const { selected, species, evolution } = selectedPokemon;
 
   return (
     <div className={styles.main}>
       <h1 className={styles.main_header}>
-        {pokemon?.name}
+        {selected?.name}
         <RouterLink className={styles.main_header_link_left}>
           Go Back
         </RouterLink>

@@ -1,20 +1,31 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Pokemon } from 'pokenode-ts';
+import { EvolutionChain, Pokemon, PokemonSpecies } from 'pokenode-ts';
 import { lastValueFrom } from 'rxjs';
-import { pokemonByName$, pokemonList$ } from '../services/api';
+import {
+  evolutionChainById$,
+  pokemonByNameOrId$,
+  pokemonList$,
+  speciesByName$,
+} from '../services/api';
 
 // Set localStorage for default value
-const selectedPokemon: Pokemon | null =
+const selectedPokemon: SelectedPokemon =
   localStorage.getItem('selectedPokemon') !== null
     ? JSON.parse(localStorage.getItem('selectedPokemon') as string)
     : null;
 
 // Define shape of the state
+interface SelectedPokemon {
+  selected: Pokemon | null;
+  species: PokemonSpecies;
+  evolution: EvolutionChain;
+}
+
 interface StateProps {
   initialPokemonList: Pokemon[];
   pokemonList: Pokemon[];
   history: Pokemon[];
-  selectedPokemon: Pokemon | null;
+  selectedPokemon: SelectedPokemon;
   isLoading: boolean;
   isError: boolean;
 }
@@ -37,12 +48,17 @@ export const getPokemon = createAsyncThunk(
 
 export const getPokemonByName = createAsyncThunk(
   'pokemon/getPokemonByName',
-  async (name: string) => await lastValueFrom(pokemonByName$(name)),
+  async (name: string) => await lastValueFrom(pokemonByNameOrId$(name)),
 );
 
 export const getPokemonDetails = createAsyncThunk(
   'pokemon/getPokemonDetails',
-  async (name: string) => await lastValueFrom(pokemonByName$(name)),
+  async (id: number) => {
+    const pokemon = await lastValueFrom(pokemonByNameOrId$(id));
+    const species = await lastValueFrom(speciesByName$(pokemon.id));
+    const evolution = await lastValueFrom(evolutionChainById$(pokemon.id));
+    return { selected: pokemon, species, evolution };
+  },
 );
 
 // Define the slice

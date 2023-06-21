@@ -15,8 +15,8 @@ const Card = ({ pokemon }: CardProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const viewPokemonDetails = async (name: string) => {
-    await dispatch(getPokemonDetails(name));
+  const viewPokemonDetails = async (id: number) => {
+    await dispatch(getPokemonDetails(id));
     navigate('/details');
   };
 
