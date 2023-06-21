@@ -5,7 +5,9 @@ import Card from '../components/Card';
 import { Pokemon } from 'pokenode-ts';
 
 const Home = () => {
+  // Redux hooks
   const { pokemon } = useSelector((state: RootState) => state.pokemon);
+
   return (
     <>
       <h1 className={styles.header}>Pokédex</h1>

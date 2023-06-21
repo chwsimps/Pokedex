@@ -3,6 +3,11 @@ import { Pokemon } from 'pokenode-ts';
 import { lastValueFrom } from 'rxjs';
 import { pokemonByName$, pokemonList$ } from '../services/api';
 
+const selectedPokemon: Pokemon | null =
+  localStorage.getItem('selectedPokemon') !== null
+    ? JSON.parse(localStorage.getItem('selectedPokemon') as string)
+    : null;
+
 // Define shape of the state
 interface StateProps {
   pokemon: Pokemon[];
@@ -16,7 +21,7 @@ interface StateProps {
 const initialState: StateProps = {
   pokemon: [],
   history: [],
-  selectedPokemon: null,
+  selectedPokemon,
   isLoading: false,
   isError: false,
 };
@@ -83,6 +88,7 @@ const pokemonSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.selectedPokemon = payload;
+      localStorage.setItem('selectedPokemon', JSON.stringify(payload));
     });
 
     builder.addCase(getPokemonDetails.rejected, (state) => {
