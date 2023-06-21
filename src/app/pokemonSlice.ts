@@ -10,7 +10,7 @@ const selectedPokemon: Pokemon | null =
 
 // Define shape of the state
 interface StateProps {
-  pokemon: Pokemon[];
+  pokemonList: Pokemon[];
   history: Pokemon[];
   selectedPokemon: Pokemon | null;
   isLoading: boolean;
@@ -19,7 +19,7 @@ interface StateProps {
 
 // Define initial state
 const initialState: StateProps = {
-  pokemon: [],
+  pokemonList: [],
   history: [],
   selectedPokemon,
   isLoading: false,
@@ -56,7 +56,7 @@ const pokemonSlice = createSlice({
     builder.addCase(getPokemon.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = false;
-      state.pokemon = payload;
+      state.pokemonList = payload;
     });
 
     builder.addCase(getPokemon.rejected, (state) => {
@@ -71,8 +71,8 @@ const pokemonSlice = createSlice({
     builder.addCase(getPokemonByName.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = false;
-      state.pokemon = [payload];
       state.history.push(payload);
+      state.pokemonList = [payload];
     });
 
     builder.addCase(getPokemonByName.rejected, (state) => {

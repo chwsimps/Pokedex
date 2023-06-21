@@ -1,10 +1,10 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Pokemon } from 'pokenode-ts';
+import { AppDispatch } from '../app/store';
+import { getPokemonDetails } from '../app/pokemonSlice';
 import styles from '@/styles/Card.module.scss';
 import colors from '@/styles/_colors.module.scss';
-import { Pokemon } from 'pokenode-ts';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../app/store';
-import { useNavigate } from 'react-router-dom';
-import { getPokemonDetails } from '../app/pokemonSlice';
 
 interface CardProps {
   pokemon: Pokemon;

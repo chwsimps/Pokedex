@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../app/store';
 import { useCallback, useEffect, useRef } from 'react';
 import { Subject, debounceTime, switchMap } from 'rxjs';
+import { AppDispatch } from '../app/store';
 import { getPokemon, getPokemonByName } from '../app/pokemonSlice';
 import styles from '@/styles/Input.module.scss';
 

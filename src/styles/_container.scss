@@ -1,0 +1,50 @@
+@import 'mixin';
+
+// App container
+.app_container {
+  padding: 2vw 7.5vw;
+
+  @include md {
+    padding: 0.5vw 5vw;
+  }
+}
+
+// Main container for multiple pages
+.main_container {
+  position: relative;
+
+  &_header {
+    font-family: 'Righteous', Roboto, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin: 2.5vh 0;
+    color: #2c3e50;
+  }
+
+  &_link,
+  &_link_left {
+    position: absolute;
+    right: 3vh;
+    top: 2vh;
+    color: #0984e3;
+    text-decoration: none;
+    font-size: 16px;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+
+    &_left {
+      left: 2vh;
+      right: auto;
+    }
+  }
+}
+
+// Pokemon card container
+.pokemon_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+}

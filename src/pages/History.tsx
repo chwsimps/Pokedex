@@ -6,22 +6,22 @@ import Input from '../components/Input';
 import RouterLink from '../components/RouterLink';
 import styles from '@/styles/App.module.scss';
 
-const Home = () => {
+const History = () => {
   // Redux hooks
-  const { pokemonList } = useSelector((state: RootState) => state.pokemon);
+  const { history } = useSelector((state: RootState) => state.pokemon);
 
   return (
     <div className={styles.main_container}>
       <h1 className={styles.main_container_header}>Pokédex</h1>
 
-      <RouterLink to="/history" className={styles.main_container_link}>
-        View History
+      <RouterLink to="/" className={styles.main_container_link_left}>
+        Go Back
       </RouterLink>
 
       <Input />
 
       <div className={styles.pokemon_card_container}>
-        {pokemonList.map((pokemon: Pokemon) => (
+        {history.map((pokemon: Pokemon) => (
           <Card key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default History;
