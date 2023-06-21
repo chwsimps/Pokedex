@@ -17,7 +17,7 @@ const Card = ({ pokemon }: CardProps) => {
 
   const viewPokemonDetails = async (name: string) => {
     await dispatch(getPokemonDetails(name));
-    navigate('details');
+    navigate('/details');
   };
 
   // Img url

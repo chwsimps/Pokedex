@@ -11,12 +11,13 @@ const Home = () => {
   const { pokemonList } = useSelector((state: RootState) => state.pokemon);
 
   return (
-    <div className={styles.main_container}>
-      <h1 className={styles.main_container_header}>Pokédex</h1>
-
-      <RouterLink to="/history" className={styles.main_container_link}>
-        View History
-      </RouterLink>
+    <div className={styles.main}>
+      <h1 className={styles.main_header}>
+        Pokédex
+        <RouterLink to="/history" className={styles.main_header_link}>
+          View History
+        </RouterLink>
+      </h1>
 
       <Input />
 

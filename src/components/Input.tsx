@@ -33,7 +33,7 @@ const Input = () => {
         dispatch(getPokemon());
       }
     },
-    [searchPokemonRef],
+    [dispatch, searchPokemonRef],
   );
 
   return (

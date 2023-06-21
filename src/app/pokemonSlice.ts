@@ -3,6 +3,7 @@ import { Pokemon } from 'pokenode-ts';
 import { lastValueFrom } from 'rxjs';
 import { pokemonByName$, pokemonList$ } from '../services/api';
 
+// Set localStorage for default value
 const selectedPokemon: Pokemon | null =
   localStorage.getItem('selectedPokemon') !== null
     ? JSON.parse(localStorage.getItem('selectedPokemon') as string)
@@ -10,6 +11,7 @@ const selectedPokemon: Pokemon | null =
 
 // Define shape of the state
 interface StateProps {
+  initialPokemonList: Pokemon[];
   pokemonList: Pokemon[];
   history: Pokemon[];
   selectedPokemon: Pokemon | null;
@@ -19,6 +21,7 @@ interface StateProps {
 
 // Define initial state
 const initialState: StateProps = {
+  initialPokemonList: [],
   pokemonList: [],
   history: [],
   selectedPokemon,
@@ -46,7 +49,11 @@ export const getPokemonDetails = createAsyncThunk(
 const pokemonSlice = createSlice({
   name: 'pokemon',
   initialState,
-  reducers: {},
+  reducers: {
+    setInitPokemonList(state) {
+      state.pokemonList = state.initialPokemonList;
+    },
+  },
   extraReducers(builder) {
     // getPokemon
     builder.addCase(getPokemon.pending, (state) => {
@@ -57,6 +64,7 @@ const pokemonSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.pokemonList = payload;
+      if (!state.initialPokemonList.length) state.initialPokemonList = payload;
     });
 
     builder.addCase(getPokemon.rejected, (state) => {
@@ -97,4 +105,5 @@ const pokemonSlice = createSlice({
   },
 });
 
+export const { setInitPokemonList } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

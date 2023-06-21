@@ -69,15 +69,25 @@
 
   &_img {
     position: absolute;
-    max-width: 32.5vw;
-    max-height: 32.5vw;
+    max-width: 30vw;
+    max-height: 30vw;
     top: -1vw;
     left: 50%;
     transform: translateX(-50%);
 
+    @include sm {
+      max-width: 16vw;
+      max-height: 16vw;
+    }
+
     @include md {
       max-width: 10vw;
       max-height: 10vw;
+    }
+
+    @include xxl {
+      max-width: 7vw;
+      max-height: 7vw;
     }
   }
 }

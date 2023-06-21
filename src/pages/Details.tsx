@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { RootState } from '../app/store';
+import RouterLink from '../components/RouterLink';
+import styles from '@/styles/App.module.scss';
 
 const Details = () => {
   // Redux hooks
@@ -9,9 +10,13 @@ const Details = () => {
   );
 
   return (
-    <div>
-      <Link to="/">Back</Link>
-      <h1>{pokemon?.name}</h1>
+    <div className={styles.main}>
+      <h1 className={styles.main_header}>
+        {pokemon?.name}
+        <RouterLink className={styles.main_header_link_left}>
+          Go Back
+        </RouterLink>
+      </h1>
     </div>
   );
 };

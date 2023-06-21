@@ -10,33 +10,41 @@
 }
 
 // Main container for multiple pages
-.main_container {
-  position: relative;
-
+.main {
   &_header {
+    position: relative;
     font-family: 'Righteous', Roboto, sans-serif;
     font-size: 40px;
     text-align: center;
-    margin: 2.5vh 0;
+    margin: 2.5vh auto;
     color: #2c3e50;
-  }
+    max-width: 550px;
 
-  &_link,
-  &_link_left {
-    position: absolute;
-    right: 3vh;
-    top: 2vh;
-    color: #0984e3;
-    text-decoration: none;
-    font-size: 16px;
+    &_link,
+    &_link_left {
+      display: block;
+      margin-top: 2vh;
+      color: #0984e3;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
 
-    &:hover {
-      text-decoration: underline !important;
-    }
+      @include sm {
+        position: absolute;
+        right: 0;
+        top: 2vh;
+        margin: 0;
+      }
 
-    &_left {
-      left: 2vh;
-      right: auto;
+      &:hover {
+        text-decoration: underline !important;
+      }
+
+      &_left {
+        left: 0;
+        right: auto;
+      }
     }
   }
 }
