@@ -1,4 +1,5 @@
 @import 'breakpoints';
+@import 'colors.module';
 
 // App container
 .app_container {
@@ -18,13 +19,21 @@
     text-align: center;
     text-transform: capitalize;
     margin: 2.5vh auto;
-    color: #2c3e50;
+    color: $darkBlue;
     max-width: 550px;
 
     &_id {
-      margin: 0 -100px 0 25px;
+      display: block;
+      margin-top: 1vh;
       font-size: 20px;
       opacity: 0.7;
+
+      @include sm {
+        position: absolute;
+        top: 31.5%;
+        right: 0;
+        margin: 0;
+      }
     }
 
     &_link,

@@ -1,4 +1,5 @@
 @import 'breakpoints';
+@import 'colors.module';
 
 .pokemon_info {
   display: flex;
@@ -14,10 +15,9 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    color: #2c3e50;
+    color: $darkBlue;
     text-transform: capitalize;
-    box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
-      0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+    box-shadow: $mainBoxShadow;
     margin: 30px;
     border-radius: 8px;
     padding: 1.5vw 2vw;
@@ -25,7 +25,7 @@
     h4 {
       font-size: 20px;
       margin: 0 -2vw 1vw;
-      border-bottom: 2px solid #2c3e50;
+      border-bottom: 2px solid $darkBlue;
       padding: 0 2vw 1vw;
     }
 
@@ -42,13 +42,29 @@
       }
 
       &.evolution_chip {
+        position: relative;
         width: 50%;
         padding: 12.5px;
         border-radius: 5px;
         margin: 15px auto;
-        color: white;
+        color: $white;
         text-align: center;
         cursor: pointer;
+
+        &::after {
+          font-family: 'Material Symbols Outlined';
+          content: '\e5db';
+          position: absolute;
+          left: 50%;
+          bottom: -25px;
+          transform: translateX(-50%);
+          font-size: 18px;
+          color: $darkBlue;
+        }
+
+        &:last-child::after {
+          content: '';
+        }
       }
 
       .value,

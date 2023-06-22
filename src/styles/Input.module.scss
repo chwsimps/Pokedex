@@ -1,3 +1,5 @@
+@import 'colors.module';
+
 .input_container {
   position: relative;
   display: flex;
@@ -17,7 +19,7 @@
     padding: 6px 12px;
     font-size: 16px;
     line-height: 1.5;
-    color: #2c3e50;
+    color: $darkBlue;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
@@ -25,7 +27,7 @@
     border-radius: 4px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     &:focus {
-      box-shadow: 0 0 0 0.05rem #2c3e50;
+      box-shadow: 0 0 0 0.05rem $darkBlue;
     }
   }
 }
