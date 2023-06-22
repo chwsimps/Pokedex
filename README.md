@@ -17,7 +17,7 @@ The setup includes:
 1.  Clone the repository: `https://github.com/chwsimps/Pokedex.git`
 2.  Navigate to the project directory: `cd pokedex`
 3.  Install dependencies: `yarn`
-4.  Start the development server: `yarn build`
+4.  Start the development server: `yarn dev`
 5.  Open your web browser and visit `http://localhost:5173/`
 
 ## Usage
