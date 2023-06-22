@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from '../store/store';
 import RouterLink from '../components/RouterLink';
-import { pokemonData } from '../utils/helpers';
+import { evolutionData, pokemonData, speciesData } from '../utils/helpers';
 import { getPokemonDetails } from '../store/pokemon/PokemonThunk';
 import Loader from '../components/Loader';
 import styles from '@/styles/Details.module.scss';
 import colors from '@/styles/_colors.module.scss';
+import PokemonTypes from '../components/PokemonTypes';
 
 const Details = () => {
   // Redux hooks
@@ -19,20 +20,22 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getPokemonDetails(locState.id));
-  }, [dispatch]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;
   }
 
   const { selected, species, evolution } = selectedPokemon;
+  console.log({ selected, species, evolution });
 
   // Pokemon helper data
-  const { imgSrc, typeNames, bgColor } = pokemonData(selected);
+  const { imgSrc, typeNames, bgColor, height, weight } = pokemonData(selected);
+  const { description, speciesType } = speciesData(species);
+  const { evolutionChain } = evolutionData(evolution);
 
   // Styles
   const linearGradient = `linear-gradient(-15deg, ${colors[bgColor]} 65%, white 35%)`;
-  console.log(linearGradient);
 
   return (
     <div className={styles.main}>
@@ -42,6 +45,23 @@ const Details = () => {
           Go Back
         </RouterLink>
       </h1>
+
+      <div className={styles.details}>
+        <div className={styles.pokemon_detail_section}>
+          <h4>Pokemon Data</h4>
+          <p>
+            Species <span className={styles.value}>{speciesType}</span>
+          </p>
+          <p>
+            Height <span className={styles.value}>{height}</span>
+          </p>
+          <p>
+            Weight <span className={styles.value}>{weight}</span>
+          </p>
+        </div>
+        <PokemonTypes typeNames={typeNames} />
+        <img src={imgSrc} className={styles.detail_img} alt={selected.name} />
+      </div>
 
       {/* Background layer based on Pokemon */}
       <div

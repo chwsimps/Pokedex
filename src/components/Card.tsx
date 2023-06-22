@@ -3,6 +3,7 @@ import { Pokemon } from 'pokenode-ts';
 import { pokemonData, pokemonIdFormat } from '../utils/helpers';
 import styles from '@/styles/Card.module.scss';
 import colors from '@/styles/_colors.module.scss';
+import PokemonTypes from './PokemonTypes';
 
 interface CardProps {
   pokemon: Pokemon;
@@ -36,17 +37,7 @@ const Card = ({ pokemon }: CardProps) => {
       </p>
       <div className={styles.pokemon_card_details}>
         <h3>{pokemon.name}</h3>
-        <div className={styles.pokemon_types}>
-          {typeNames.map((type) => (
-            <span
-              key={type}
-              className={styles.pokemon_type}
-              style={{ backgroundColor: colors[`${type}_dark`] }}
-            >
-              {type}
-            </span>
-          ))}
-        </div>
+        <PokemonTypes typeNames={typeNames} />
       </div>
       <img
         src={imgSrc}
