@@ -1,7 +1,7 @@
 import { EvolutionChain, Pokemon, PokemonSpecies } from 'pokenode-ts';
 
 export interface SelectedPokemon {
-  selected: Pokemon | null;
+  selected: Pokemon;
   species: PokemonSpecies;
   evolution: EvolutionChain;
 }

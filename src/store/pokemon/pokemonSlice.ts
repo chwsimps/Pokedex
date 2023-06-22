@@ -18,7 +18,7 @@ const initialState: StateProps = {
   pokemonList: [],
   history: [],
   selectedPokemon,
-  isLoading: false,
+  isLoading: true,
   isError: false,
 };
 

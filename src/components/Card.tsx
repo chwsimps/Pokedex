@@ -1,8 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Pokemon } from 'pokenode-ts';
-import { AppDispatch } from '../store/store';
-import { getPokemonDetails } from '../store/pokemon/PokemonThunk';
+import { pokemonData, pokemonIdFormat } from '../utils/helpers';
 import styles from '@/styles/Card.module.scss';
 import colors from '@/styles/_colors.module.scss';
 
@@ -12,24 +10,15 @@ interface CardProps {
 
 const Card = ({ pokemon }: CardProps) => {
   // Redux hooks
-  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const viewPokemonDetails = async (id: number) => {
-    await dispatch(getPokemonDetails(id));
-    navigate('/details');
+  // Pokemon helper data
+  const { imgSrc, typeNames, bgColor } = pokemonData(pokemon);
+
+  const viewPokemonDetails = (id: number) => {
+    localStorage.removeItem('selectedPokemon');
+    navigate('/details', { state: { id } });
   };
-
-  // Img url
-  const imgSrc: string = pokemon.sprites.other?.dream_world
-    .front_default as string;
-
-  // Pokemon type
-  const typeNames: string[] = pokemon.types.map((t) => t.type.name);
-  const bgColor: string = typeNames[0];
-
-  // Pokemon ID format
-  const padNumber = (num: number) => `#${num.toString().padStart(4, '0')}`;
 
   return (
     <div
@@ -43,7 +32,7 @@ const Card = ({ pokemon }: CardProps) => {
           backgroundColor: colors[`${bgColor}_light`],
         }}
       >
-        {padNumber(pokemon.id)}
+        {pokemonIdFormat(pokemon.id)}
       </p>
       <div className={styles.pokemon_card_details}>
         <h3>{pokemon.name}</h3>
