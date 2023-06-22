@@ -1,7 +1,6 @@
 import {
   ChainLink,
   EvolutionChain,
-  NamedAPIResource,
   Pokemon,
   PokemonSpecies,
 } from 'pokenode-ts';
@@ -15,8 +14,9 @@ export const pokemonData = (pokemon: Pokemon) => ({
   // data
   height: `${pokemon.height / 10}kg`,
   weight: `${pokemon.weight / 10}m`,
-  abilities: pokemon.abilities.map((a) => a.ability.name),
-  typeNames: pokemon.types.map((t) => t.type.name),
+  abilities: pokemon.abilities.map((a) => a.ability.name.replace('-', ' ')),
+  typeNames: pokemon.types.map((t) => t.type.name.replace('-', ' ')),
+  moves: pokemon.moves.slice(-10).map((m) => m.move.name.replace('-', ' ')),
 });
 
 export const speciesData = (species: PokemonSpecies) => ({

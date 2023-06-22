@@ -1,5 +1,17 @@
 @import 'container';
 
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_img {
+    width: 20vw;
+    height: 20vw;
+    margin: 3vw;
+  }
+}
+
 .bkgd_layer {
   position: fixed;
   z-index: -1;

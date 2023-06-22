@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { lastValueFrom } from 'rxjs';
 import {
-  evolutionChainById$,
+  evolutionChainByUrl$,
   pokemonByNameOrId$,
   pokemonList$,
-  speciesByName$,
+  speciesByUrl$,
 } from '../../services/api';
 
 // Async thunks
@@ -22,8 +22,10 @@ export const getPokemonDetails = createAsyncThunk(
   'pokemon/getPokemonDetails',
   async (id: number) => {
     const pokemon = await lastValueFrom(pokemonByNameOrId$(id));
-    const species = await lastValueFrom(speciesByName$(pokemon.id));
-    const evolution = await lastValueFrom(evolutionChainById$(pokemon.id));
+    const species = await lastValueFrom(speciesByUrl$(pokemon.species.url));
+    const evolution = await lastValueFrom(
+      evolutionChainByUrl$(species.evolution_chain.url),
+    );
     return { selected: pokemon, species, evolution };
   },
 );

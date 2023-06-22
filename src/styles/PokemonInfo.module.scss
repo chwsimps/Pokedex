@@ -1,0 +1,53 @@
+.pokemon_info {
+  display: flex;
+  width: 100%;
+
+  &_flex,
+  &_block {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    color: #2c3e50;
+    text-transform: capitalize;
+    padding: 0 3vh;
+    box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+      0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+    margin: 30px;
+    border-radius: 8px;
+    padding: 15px;
+
+    h4 {
+      font-size: 20px;
+      margin: 0 0 1vh;
+    }
+
+    p {
+      display: flex;
+      padding: 0.5vh 0;
+
+      &.inline_block {
+        display: inline-block;
+        width: 50%;
+      }
+
+      &.evolution_chip {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        padding: 8px;
+        border-radius: 5px;
+        margin: 5px auto;
+        color: white;
+        cursor: pointer;
+      }
+
+      .value {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &_block {
+    display: block;
+  }
+}

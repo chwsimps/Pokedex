@@ -18,8 +18,6 @@ import { ajax } from 'rxjs/ajax';
 // Base URLs
 const BASE_URL = 'https://pokeapi.co/api/v2';
 const POKEMON_URL = `${BASE_URL}/pokemon`;
-const POKEMON_SPECIES_URL = `${BASE_URL}/pokemon-species`;
-const EVOLUTION_CHAIN_URL = `${BASE_URL}/evolution-chain`;
 
 // Observables related to pokemon api
 // Get rosource list for pokemon urls
@@ -51,15 +49,15 @@ export const pokemonByNameOrId$ = (
     .pipe(catchError((error: Error) => handleError(error)));
 
 // Get species by id
-export const speciesByName$ = (id: number): Observable<PokemonSpecies> =>
+export const speciesByUrl$ = (url: string): Observable<PokemonSpecies> =>
   ajax
-    .getJSON<PokemonSpecies>(`${POKEMON_SPECIES_URL}/${id}`)
+    .getJSON<PokemonSpecies>(url)
     .pipe(catchError((error: Error) => handleError(error)));
 
 // Get evolution chain by id
-export const evolutionChainById$ = (id: number): Observable<EvolutionChain> =>
+export const evolutionChainByUrl$ = (url: string): Observable<EvolutionChain> =>
   ajax
-    .getJSON<EvolutionChain>(`${EVOLUTION_CHAIN_URL}/${id}`)
+    .getJSON<EvolutionChain>(url)
     .pipe(catchError((error: Error) => handleError(error)));
 
 // Error handling
