@@ -4,6 +4,7 @@ import {
   Pokemon,
   PokemonSpecies,
 } from 'pokenode-ts';
+import { EvolutionChainData } from './interfaces';
 
 // --- Pokemon details ---
 export const pokemonData = (pokemon: Pokemon) => ({
@@ -12,6 +13,7 @@ export const pokemonData = (pokemon: Pokemon) => ({
   bgColor: pokemon.types[0].type.name,
 
   // data
+  pokemonNum: `#${pokemon.id.toString().padStart(4, '0')}`,
   height: `${pokemon.height / 10}kg`,
   weight: `${pokemon.weight / 10}m`,
   abilities: pokemon.abilities.map((a) => a.ability.name.replace('-', ' ')),
@@ -28,12 +30,10 @@ export const evolutionData = (evol: EvolutionChain) => ({
   evolutionChain: getSpecies(evol.chain),
 });
 
-interface EvolutionData {
-  name: string;
-  id: number;
-}
-
-const getSpecies = (obj: ChainLink, evolutionList: EvolutionData[] = []) => {
+const getSpecies = (
+  obj: ChainLink,
+  evolutionList: EvolutionChainData[] = [],
+) => {
   if (obj.species) {
     const urlId = obj.species.url.split('/');
     evolutionList.push({
@@ -48,7 +48,3 @@ const getSpecies = (obj: ChainLink, evolutionList: EvolutionData[] = []) => {
 
   return evolutionList;
 };
-
-// Pokemon ID format
-export const pokemonIdFormat = (num: number) =>
-  `#${num.toString().padStart(4, '0')}`;

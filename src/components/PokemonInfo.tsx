@@ -11,78 +11,81 @@ const PokemonInfo = ({ selected, species, evolution }: SelectedPokemon) => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Pokemon helper data
-  const { abilities, typeNames, bgColor, height, weight, moves } =
-    pokemonData(selected);
+  const { abilities, bgColor, height, weight, moves } = pokemonData(selected);
   const { speciesType } = speciesData(species);
   const { evolutionChain } = evolutionData(evolution);
 
+  // Evolution / pokemon detail dispatch
   const viewPokemonDetails = (id: number) => {
     localStorage.removeItem('selectedPokemon');
     dispatch(getPokemonDetails(id));
   };
 
+  // Styles
+  const bgColorType = (type: string) => ({
+    backgroundColor: colors[`${bgColor}_${type}`],
+  });
+
+  interface PokemonInfoFlexProps {
+    children: React.ReactNode;
+    header: string;
+    className: string;
+  }
+
+  const PokemonInfoFlex = (props: PokemonInfoFlexProps) => {
+    return (
+      <div style={bgColorType('light')} className={props.className}>
+        <h4>{props.header}</h4>
+        {props.children}
+      </div>
+    );
+  };
+
   return (
     <div className={styles.pokemon_info}>
-      <div
-        style={{
-          backgroundColor: colors[`${bgColor}_light`],
-        }}
-        className={styles.pokemon_info_flex}
+      <PokemonInfoFlex
+        header="Pokemon Data"
+        className={styles.pokemon_info_block}
       >
-        <h4>Pokemon Data</h4>
         <p>
-          Species <span className={styles.value}>{speciesType}</span>
+          Species<span className={styles.value}>{speciesType}</span>
         </p>
         <p>
-          Height <span className={styles.value}>{height}</span>
+          Height<span className={styles.value}>{height}</span>
         </p>
         <p>
-          Weight <span className={styles.value}>{weight}</span>
+          Weight<span className={styles.value}>{weight}</span>
         </p>
         <p>
           Abilities
-          <span className={styles.value}>
+          <span className={styles.value_flex}>
             {abilities.map((ability) => (
               <span key={ability}>{ability}</span>
             ))}
           </span>
         </p>
+      </PokemonInfoFlex>
 
-        {/* <PokemonTypes typeNames={typeNames} /> */}
-      </div>
-
-      <div
-        style={{
-          backgroundColor: colors[`${bgColor}_light`],
-        }}
-        className={styles.pokemon_info_flex}
-      >
-        <h4>Evolution</h4>
+      <PokemonInfoFlex header="Evolution" className={styles.pokemon_info_flex}>
         {evolutionChain.map((evol) => (
           <p
             key={evol.id}
             onClick={() => viewPokemonDetails(evol.id)}
             className={styles.evolution_chip}
-            style={{ backgroundColor: colors[`${bgColor}_dark`] }}
+            style={bgColorType('dark')}
           >
             {evol.name}
           </p>
         ))}
-      </div>
+      </PokemonInfoFlex>
 
-      <div
-        style={{
-          backgroundColor: colors[`${bgColor}_light`],
-        }}
-        className={styles.pokemon_info_block}
-      >
-        <h4>Moves</h4>
+      <PokemonInfoFlex header="Moves" className={styles.pokemon_info_block}>
         {moves.map((move) => (
           <p key={move} className={styles.inline_block}>
             {move}
           </p>
         ))}
-      </div>
+      </PokemonInfoFlex>
     </div>
   );
 };

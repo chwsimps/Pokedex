@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Pokemon } from 'pokenode-ts';
-import { pokemonData, pokemonIdFormat } from '../utils/helpers';
+import { pokemonData } from '../utils/helpers';
 import styles from '@/styles/Card.module.scss';
 import colors from '@/styles/_colors.module.scss';
 import PokemonTypes from './PokemonTypes';
@@ -14,12 +14,17 @@ const Card = ({ pokemon }: CardProps) => {
   const navigate = useNavigate();
 
   // Pokemon helper data
-  const { imgSrc, typeNames, bgColor } = pokemonData(pokemon);
+  const { imgSrc, typeNames, bgColor, pokemonNum } = pokemonData(pokemon);
 
   const viewPokemonDetails = (id: number) => {
     localStorage.removeItem('selectedPokemon');
     navigate('/details', { state: { id } });
   };
+
+  // Styles
+  const bgColorType = (type: string) => ({
+    backgroundColor: colors[`${bgColor}_${type}`],
+  });
 
   return (
     <div
@@ -27,13 +32,8 @@ const Card = ({ pokemon }: CardProps) => {
       style={{ backgroundColor: colors[bgColor] }}
       className={styles.pokemon_card}
     >
-      <p
-        className={styles.pokemon_id}
-        style={{
-          backgroundColor: colors[`${bgColor}_light`],
-        }}
-      >
-        {pokemonIdFormat(pokemon.id)}
+      <p className={styles.pokemon_id} style={bgColorType('light')}>
+        {pokemonNum}
       </p>
       <div className={styles.pokemon_card_details}>
         <h3>{pokemon.name}</h3>

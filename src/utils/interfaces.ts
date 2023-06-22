@@ -1,5 +1,6 @@
 import { EvolutionChain, Pokemon, PokemonSpecies } from 'pokenode-ts';
 
+// State interfaces
 export interface SelectedPokemon {
   selected: Pokemon;
   species: PokemonSpecies;
@@ -13,4 +14,10 @@ export interface StateProps {
   selectedPokemon: SelectedPokemon;
   isLoading: boolean;
   isError: boolean;
+}
+
+// Helper interfaces
+export interface EvolutionChainData {
+  name: string;
+  id: number;
 }
