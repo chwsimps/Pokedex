@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Pokemon } from 'pokenode-ts';
-import { RootState } from '../app/store';
+import { RootState } from '../store/store';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import RouterLink from '../components/RouterLink';
@@ -22,8 +22,8 @@ const Home = () => {
       <Input />
 
       <div className={styles.pokemon_card_container}>
-        {pokemonList.map((pokemon: Pokemon) => (
-          <Card key={pokemon.id} pokemon={pokemon} />
+        {pokemonList.map((pokemon: Pokemon, idx: number) => (
+          <Card key={`${pokemon.name}_${idx}`} pokemon={pokemon} />
         ))}
       </div>
     </div>
