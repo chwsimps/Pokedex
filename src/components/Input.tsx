@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useCallback, useEffect, useRef } from 'react';
 import { Subject, debounceTime, switchMap } from 'rxjs';
-import { AppDispatch } from '../app/store';
-import { getPokemon, getPokemonByName } from '../app/pokemonSlice';
+import { AppDispatch } from '../store/store';
+import { getPokemon, getPokemonByName } from '../store/pokemon/PokemonThunk';
 import styles from '@/styles/Input.module.scss';
 
 const Input = () => {

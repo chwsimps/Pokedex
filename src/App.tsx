@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { AppDispatch } from './app/store';
-import { getPokemon } from './app/pokemonSlice';
+import { AppDispatch } from './store/store';
+import { getPokemon } from './store/pokemon/PokemonThunk';
 import Home from './pages/Home';
 import Details from './pages/Details';
 import History from './pages/History';

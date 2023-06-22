@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Pokemon } from 'pokenode-ts';
-import { AppDispatch } from '../app/store';
-import { getPokemonDetails } from '../app/pokemonSlice';
+import { AppDispatch } from '../store/store';
+import { getPokemonDetails } from '../store/pokemon/PokemonThunk';
 import styles from '@/styles/Card.module.scss';
 import colors from '@/styles/_colors.module.scss';
 
@@ -33,7 +33,7 @@ const Card = ({ pokemon }: CardProps) => {
 
   return (
     <div
-      onClick={() => viewPokemonDetails(pokemon.name)}
+      onClick={() => viewPokemonDetails(pokemon.id)}
       style={{ backgroundColor: colors[bgColor] }}
       className={styles.pokemon_card}
     >

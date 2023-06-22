@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch } from '../app/store';
-import { setInitPokemonList } from '../app/pokemonSlice';
+import { AppDispatch } from '../store/store';
+import { setInitPokemonList } from '../store/pokemon/pokemonSlice';
 
 interface RouterLinkProps {
   children: string;
