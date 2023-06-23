@@ -9,6 +9,7 @@ import PokemonInfo from '../components/PokemonInfo';
 import Loader from '../components/Loader';
 import styles from '@/styles/Details.module.scss';
 import colors from '@/styles/_colors.module.scss';
+import { AnyAction } from '@reduxjs/toolkit';
 
 const Details = () => {
   // Redux hooks
@@ -19,7 +20,10 @@ const Details = () => {
   );
 
   useEffect(() => {
-    dispatch(getPokemonDetails(locState.id));
+    const pokemonDetails = async (): Promise<AnyAction> =>
+      await dispatch(getPokemonDetails(locState.id));
+
+    pokemonDetails();
   }, [dispatch, locState.id]);
 
   if (isLoading) {
