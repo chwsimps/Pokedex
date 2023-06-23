@@ -22,7 +22,9 @@ export const pokemonData = (pokemon: Pokemon) => ({
 });
 
 export const speciesData = (species: PokemonSpecies) => ({
-  description: species.flavor_text_entries[0].flavor_text,
+  description: species.flavor_text_entries.find(
+    (text) => text.language.name === 'en',
+  )?.flavor_text,
   speciesType: species.genera.find((g) => g.language.name === 'en')?.genus,
 });
 
